@@ -13,7 +13,7 @@ Se utilizó como base la arquitectura existente del producto **Cisco Catalyst C9
   https://github.com/Gonzalo777ic/ejercicio_refactorizacion
 
 - **Demo desplegado (Vercel):**  
-  [https://ejercicio-refactorizacion.vercel.app/6-1427200-4.html]
+  [https://ejercicio-refactorizacion.vercel.app]
 
 ## Cambios y Mejoras Implementadas
 
