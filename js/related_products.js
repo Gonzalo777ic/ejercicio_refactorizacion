@@ -47,11 +47,11 @@ const relatedProductsData = {
             }
         ]
     },
-    // Categoría para la página de productos AMP (Nueva)
+
     "amp-6-1427200-4": {
         title: "Productos Relacionados: Conectividad AMP",
         products: [
-            // Aquí podrás añadir los datos que extraigas de la página AMP
+
             {
                 id: "ejemplo-amp",
                 title: "Producto AMP Relacionado",

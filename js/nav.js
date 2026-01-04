@@ -1,31 +1,33 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // 1. Cargar Navbar (Ahora busca el placeholder)
+
     const navbarPlaceholder = document.getElementById('navbar-placeholder');
     if (navbarPlaceholder) {
         fetch('./components/navbar.html')
-            .then(response => response.text())
+            .then(response => {
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                return response.text();
+            })
             .then(data => {
                 navbarPlaceholder.innerHTML = data;
                 initializeNavbar();
                 initializeMobileMenu();
                 initializeSearchModal();
                 addDynamicStyles();
+                initializeSmartNavbar();
             })
-            .catch(e => console.error('Error navbar:', e));
-    } else {
-        // Fallback opcional: Si no existe el placeholder, no hace nada (o lo inyecta al inicio si prefieres mantener la lógica antigua como respaldo)
-        console.warn('No se encontró #navbar-placeholder. El menú no se cargará.');
+            .catch(error => {
+                console.error('Error loading navbar:', error);
+            });
     }
 
-    // 2. CARGA MASIVA DE COMPONENTES
-    // Busca cualquier elemento con data-component y carga su contenido
+
     const components = document.querySelectorAll('[data-component]');
     components.forEach(el => {
         const path = el.getAttribute('data-component');
         loadComponent(el, path);
     });
 
-    // 3. Productos Relacionados
+
     const relatedPlaceholder = document.getElementById('related-products-placeholder');
     if (relatedPlaceholder) {
         const category = relatedPlaceholder.getAttribute('data-category');
@@ -38,30 +40,69 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 async function loadComponent(element, path) {
+    if (!element || !path) return;
     try {
         const response = await fetch(path);
-        if (!response.ok) throw new Error(`Status ${response.status}`);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const html = await response.text();
         element.innerHTML = html;
+        
+        if (path.includes('images.html') || path.includes('product-detail')) {
+            setTimeout(() => {
+                if (typeof initializeImageZoom === 'function') {
+                    initializeImageZoom();
+                }
+            }, 50);
+        }
     } catch (e) {
         console.error(`Error cargando ${path}:`, e);
-        element.innerHTML = `<div class="p-4 text-red-500 text-xs border border-red-200 bg-red-50 rounded">Error: No se pudo cargar ${path}</div>`;
     }
 }
 
-// ... (Resto de funciones de UI se mantienen igual: initializeNavbar, etc.) ...
-function initializeNavbar() {
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    if (mobileMenuButton) {
-        const icon = mobileMenuButton.querySelector('i');
-        mobileMenuButton.addEventListener('click', function() {
-            if (icon) {
-                icon.classList.toggle('fa-bars');
-                icon.classList.toggle('fa-times');
-            }
-        });
-    }
+
+let isMobileMenuOpen = false;
+
+
+function initializeSmartNavbar() {
+    const placeholder = document.getElementById('navbar-placeholder');
+    const nav = placeholder ? placeholder.querySelector('nav') : null;
+    
+    if (!nav || !placeholder) return;
+
+    nav.style.position = 'fixed';
+    nav.style.top = '0';
+    nav.style.left = '0';
+    nav.style.width = '100%';
+    nav.style.zIndex = '50';
+    nav.style.transition = 'transform 0.3s ease-in-out';
+    nav.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
+
+    const updateSpacer = () => {
+        if (nav.offsetHeight > 0) placeholder.style.height = `${nav.offsetHeight}px`;
+    };
+
+    const resizeObserver = new ResizeObserver(() => updateSpacer());
+    resizeObserver.observe(nav);
+    updateSpacer();
+
+    let lastScrollTop = 0;
+    const delta = 5;
+
+    window.addEventListener('scroll', () => {
+        if (isMobileMenuOpen) return;
+
+        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        if (Math.abs(lastScrollTop - currentScroll) <= delta) return;
+
+        if (currentScroll > lastScrollTop && currentScroll > nav.offsetHeight) {
+            nav.style.transform = 'translateY(-100%)';
+        } else {
+            nav.style.transform = 'translateY(0)';
+        }
+        lastScrollTop = currentScroll;
+    }, { passive: true });
 }
+
 
 function initializeMobileMenu() {
     const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -71,33 +112,53 @@ function initializeMobileMenu() {
 
     if (!mobileMenuButton || !mobileMenu) return;
 
-    mobileMenuButton.addEventListener('click', () => {
-        mobileMenu.classList.remove('-translate-x-full');
-        mobileMenu.classList.remove('hidden');
-        if (menuOverlay) menuOverlay.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-        
-        const icon = mobileMenuButton.querySelector('i');
-        if (icon) {
-            icon.classList.remove('fa-bars');
-            icon.classList.add('fa-times');
-        }
-    });
 
-    if (closeMenuButton) closeMenuButton.addEventListener('click', closeMobileMenu);
-    if (menuOverlay) menuOverlay.addEventListener('click', closeMobileMenu);
-
-    function closeMobileMenu() {
-        mobileMenu.classList.add('-translate-x-full');
-        if (menuOverlay) menuOverlay.classList.add('hidden');
-        document.body.style.overflow = '';
-        const icon = mobileMenuButton.querySelector('i');
-        if (icon) {
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
-        }
+    if (mobileMenu.parentNode !== document.body) {
+        document.body.appendChild(mobileMenu);
+        if (menuOverlay) document.body.appendChild(menuOverlay);
     }
+
+    const openMenu = () => {
+        isMobileMenuOpen = true;
+        
+        const nav = document.querySelector('#navbar-placeholder nav');
+        if (nav) nav.style.transform = 'translateY(0)';
+
+
+        mobileMenu.style.visibility = 'visible';
+        
+
+        mobileMenu.classList.remove('-translate-x-full');
+        if (menuOverlay) {
+            menuOverlay.classList.remove('hidden');
+            setTimeout(() => menuOverlay.classList.remove('opacity-0'), 10);
+        }
+        document.body.style.overflow = 'hidden';
+    };
+
+    const closeMenu = () => {
+        isMobileMenuOpen = false;
+
+        mobileMenu.classList.add('-translate-x-full');
+        if (menuOverlay) {
+            menuOverlay.classList.add('opacity-0');
+            setTimeout(() => menuOverlay.classList.add('hidden'), 300);
+        }
+        document.body.style.overflow = '';
+
+
+        setTimeout(() => {
+            mobileMenu.style.visibility = 'hidden';
+        }, 300);
+    };
+
+    mobileMenuButton.addEventListener('click', openMenu);
+    if (closeMenuButton) closeMenuButton.addEventListener('click', closeMenu);
+    if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
 }
+
+
+function initializeNavbar() { /* ... */ }
 
 function initializeSearchModal() {
     const searchModal = document.getElementById('search-modal');
@@ -105,17 +166,22 @@ function initializeSearchModal() {
     const mobileSearchButton = document.getElementById('mobile-search-button');
     const closeSearch = document.getElementById('close-search');
 
+    if (searchModal && searchModal.parentNode !== document.body) {
+        document.body.appendChild(searchModal);
+    }
+
     function openSearchModal() {
         if (searchModal) {
-            searchModal.classList.remove('none');
-            searchModal.classList.add('anim');
+            searchModal.classList.remove('hidden');
+            searchModal.classList.add('flex');
             document.body.style.overflow = 'hidden';
         }
     }
 
     function closeSearchModal() {
         if (searchModal) {
-            searchModal.classList.add('none');
+            searchModal.classList.add('hidden');
+            searchModal.classList.remove('flex');
             document.body.style.overflow = '';
         }
     }
@@ -132,15 +198,15 @@ function initializeSearchModal() {
 }
 
 function addDynamicStyles() {
-    const style = document.createElement('style');
-    style.textContent = `
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
-        .anim { animation: fadeIn 0.3s ease-in-out; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .none { display: none; }
-        .-translate-x-full { transform: translateX(-100%); }
-        #mobile-menu { transition: transform 0.3s ease-in-out; }
-        #menu-overlay { background-color: rgba(0, 0, 0, 0.5); }
-    `;
-    document.head.appendChild(style);
+    if (!document.getElementById('dynamic-styles')) {
+        const style = document.createElement('style');
+        style.id = 'dynamic-styles';
+        style.textContent = `
+            .anim { animation: fadeIn 0.3s ease-in-out; }
+            @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+            .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+            .custom-scrollbar::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 4px; }
+        `;
+        document.head.appendChild(style);
+    }
 }
