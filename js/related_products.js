@@ -1,16 +1,10 @@
 const relatedProductsData = {
-    "cisco-catalyst-9200": {
-        title: "También Disponible: Cisco Catalyst 9200 en stock",
+    // CASO 1: Estoy en la página del 24T (Index)
+    // data-category="cisco-catalyst-9200-24T"
+    "cisco-catalyst-9200-24T": {
+        title: "También Disponible: Cisco Catalyst 9200 en stock asdasd",
         products: [
-
-            {
-                id: "C9200L-24T-4G-E",
-                title: "C9200L-24T-4G-E",
-                desc: "Switch Cisco Catalyst 9200L Essentials C9200L-24T, capa L3 con 24 puertos Gigabit, 04 puertos para fibra SFP. (Modelo Base)",
-                img: "https://web.netperu100.com/cisco/catalyst/images/C9200L-48T-4G-E_front.jpg", 
-                link: "index.html"
-            },
-
+            // 1. EL 24P (Alternativa directa PoE)
             {
                 id: "C9200L-24P-4G-E",
                 title: "C9200L-24P-4G-E",
@@ -18,8 +12,7 @@ const relatedProductsData = {
                 img: "https://web.netperu100.com/cisco/catalyst/images/C9200L-24P-4G-E_front.jpg",
                 link: "C9200L-24P-4G-E.html"
             },
-
-
+            // 2. EL CABLE (Accesorio útil)
             {
                 id: "6-1427200-4",
                 title: "Cable UTP Cat6 AMP",
@@ -27,7 +20,7 @@ const relatedProductsData = {
                 img: "https://www.ds3comunicaciones.com/AMP/images/Caja.jpg", 
                 link: "6-1427200-4.html"
             },
-
+            // 3. MODELO 24T con 10G (Upgrade)
             {
                 id: "C9200L-24T-4X-E",
                 title: "C9200L-24T-4X-E",
@@ -35,6 +28,15 @@ const relatedProductsData = {
                 img: "https://web.netperu100.com/cisco/catalyst/images/C9200L-24T-4X-E_front.jpg",
                 link: "#"
             },
+             // 4. MODELO 48T (Mayor densidad)
+             {
+                id: "C9200L-48T-4G-E",
+                title: "C9200L-48T-4G-E",
+                desc: "Switch Cisco Catalyst 9200L Essentials C9200L-48T, capa L3 con 48 puertos Gigabit, 04 puertos para fibra SFP.",
+                img: "https://web.netperu100.com/cisco/catalyst/images/C9200L-48T-4G-E_front.jpg",
+                link: "#"
+            },
+            // 5. MODELO 24P con 10G
             {
                 id: "C9200L-24P-4X-E",
                 title: "C9200L-24P-4X-E",
@@ -42,20 +44,78 @@ const relatedProductsData = {
                 img: "https://web.netperu100.com/cisco/catalyst/images/C9200L-24P-4X-E_front.jpg",
                 link: "#"
             },
+            // 6. MODELO 48T con 10G
             {
-                id: "C9200L-48T-4G-E",
-                title: "C9200L-48T-4G-E",
-                desc: "Switch Cisco Catalyst 9200L Essentials C9200L-48T, capa L3 con 48 puertos Gigabit, 04 puertos para fibra SFP.",
-                img: "https://web.netperu100.com/cisco/catalyst/images/C9200L-48T-4G-E_front.jpg",
+                id: "C9200L-48T-4X-E",
+                title: "C9200L-48T-4X-E",
+                desc: "Switch Cisco Catalyst 9200L Essentials C9200L-48T, capa L3 con 48 puertos Gigabit, 04 puertos 10G para fibra SFP+.",
+                img: "https://web.netperu100.com/cisco/catalyst/images/C9200L-48T-4X-E_front.jpg",
                 link: "#"
             }
         ]
     },
 
+    // CASO 2: Estoy en la página del 24P
+    // data-category="cisco-catalyst-9200-24P"
+    "cisco-catalyst-9200-24P": {
+        title: "También Disponible: Cisco Catalyst 9200 en stock asdasd",
+        products: [
+            // 1. EL 24T (Alternativa más económica / solo datos)
+            {
+                id: "C9200L-24T-4G-E",
+                title: "C9200L-24T-4G-E",
+                desc: "Switch Cisco Catalyst 9200L Essentials C9200L-24T, capa L3 con 24 puertos Gigabit, 04 puertos para fibra SFP. (Modelo Base)",
+                img: "https://web.netperu100.com/cisco/catalyst/images/C9200L-48T-4G-E_front.jpg", 
+                link: "index.html"
+            },
+            // 2. EL CABLE (Accesorio útil)
+            {
+                id: "6-1427200-4",
+                title: "Cable UTP Cat6 AMP",
+                desc: "Cable Ethernet UTP Categoría 6 CommScope (AMP) 6-1427200-4, bobina de 305m, color azul. Para cableado estructurado.",
+                img: "https://www.ds3comunicaciones.com/AMP/images/Caja.jpg", 
+                link: "6-1427200-4.html"
+            },
+            // 3. MODELO 24P con 10G (Upgrade directo)
+            {
+                id: "C9200L-24P-4X-E",
+                title: "C9200L-24P-4X-E",
+                desc: "Switch Cisco Catalyst 9200L Essentials C9200L-24P, capa L3 con 24 puertos PoE+ (370W) Gigabit, 04 puertos 10G para fibra SFP+.",
+                img: "https://web.netperu100.com/cisco/catalyst/images/C9200L-24P-4X-E_front.jpg",
+                link: "#"
+            },
+            // 4. MODELO 48P (Mayor densidad PoE)
+            {
+                id: "C9200L-48P-4G-E",
+                title: "C9200L-48P-4G-E",
+                desc: "Switch Cisco Catalyst 9200L Essentials C9200L-48P, capa L3 con 48 puertos PoE+ (740W) Gigabit, 04 puertos para fibra SFP.",
+                img: "https://web.netperu100.com/cisco/catalyst/images/C9200L-48P-4G-E_front.jpg",
+                link: "#"
+            },
+             // 5. MODELO 24T con 10G
+             {
+                id: "C9200L-24T-4X-E",
+                title: "C9200L-24T-4X-E",
+                desc: "Switch Cisco Catalyst 9200L Essentials C9200L-24T, capa L3 con 24 puertos Gigabit, 04 puertos 10G para fibra SFP+.",
+                img: "https://web.netperu100.com/cisco/catalyst/images/C9200L-24T-4X-E_front.jpg",
+                link: "#"
+            },
+             // 6. MODELO 48T con 10G
+             {
+                id: "C9200L-48T-4X-E",
+                title: "C9200L-48T-4X-E",
+                desc: "Switch Cisco Catalyst 9200L Essentials C9200L-48T, capa L3 con 48 puertos Gigabit, 04 puertos 10G para fibra SFP+.",
+                img: "https://web.netperu100.com/cisco/catalyst/images/C9200L-48T-4X-E_front.jpg",
+                link: "#"
+            }
+        ]
+    },
+
+    // CASO 3: Estoy en la página del Cable AMP
+    // data-category="amp-6-1427200-4"
     "amp-6-1427200-4": {
         title: "Productos Relacionados: Switches Compatibles",
         products: [
-
             {
                 id: "C9200L-24T-4G-E",
                 title: "Switch C9200L-24T",
@@ -80,7 +140,16 @@ const relatedProductsData = {
  */
 function renderRelatedProducts(categoryKey) {
     const container = document.getElementById('related-products-placeholder');
-    if (!container || !relatedProductsData[categoryKey]) return;
+    
+    if (!container) {
+        console.warn('RenderRelated: No se encontró el contenedor placeholder.');
+        return;
+    }
+
+    if (!relatedProductsData[categoryKey]) {
+        console.warn('RenderRelated: No existen datos para la categoría:', categoryKey);
+        return;
+    }
 
     const data = relatedProductsData[categoryKey];
     
@@ -117,3 +186,19 @@ function renderRelatedProducts(categoryKey) {
 
     container.innerHTML = html;
 }
+
+// === EJECUCIÓN INMEDIATA ===
+// No usamos DOMContentLoaded porque al estar el script al final del body, el DOM ya existe.
+(function initRelatedProducts() {
+    const placeholder = document.getElementById('related-products-placeholder');
+    if (placeholder) {
+        const category = placeholder.getAttribute('data-category');
+        console.log("Inicializando Productos Relacionados para:", category);
+        
+        if (category) {
+            renderRelatedProducts(category);
+        }
+    } else {
+        console.log("No se encontró el placeholder 'related-products-placeholder'.");
+    }
+})();
