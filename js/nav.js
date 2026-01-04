@@ -1,57 +1,55 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // 1. Cargar Navbar
-    fetch('./components/navbar.html')
-        .then(response => response.text())
-        .then(data => {
-            document.body.insertAdjacentHTML('afterbegin', data);
-            initializeNavbar();
-            initializeMobileMenu();
-            initializeSearchModal();
-            addDynamicStyles();
-        })
-        .catch(error => console.error('Error loading navbar:', error));
-
-    // 2. Cargar Componentes Estructurales
-    loadComponent('submenu-placeholder', './components/submenu.html');
-    loadComponent('sidebar-brands-placeholder', './components/sidebar-brands.html');
-    loadComponent('sidebar-prices-placeholder', './components/sidebar-prices.html');
-    loadComponent('footer-placeholder', './components/footer.html');
-
-    // 3. Cargar Detalle del Producto (Dinámico)
-    const productDetail = document.getElementById('product-detail-placeholder');
-    if (productDetail) {
-        const componentPath = productDetail.getAttribute('data-component');
-        if (componentPath) {
-            loadComponent('product-detail-placeholder', componentPath);
-        }
+    // 1. Cargar Navbar (Ahora busca el placeholder)
+    const navbarPlaceholder = document.getElementById('navbar-placeholder');
+    if (navbarPlaceholder) {
+        fetch('./components/navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                navbarPlaceholder.innerHTML = data;
+                initializeNavbar();
+                initializeMobileMenu();
+                initializeSearchModal();
+                addDynamicStyles();
+            })
+            .catch(e => console.error('Error navbar:', e));
+    } else {
+        // Fallback opcional: Si no existe el placeholder, no hace nada (o lo inyecta al inicio si prefieres mantener la lógica antigua como respaldo)
+        console.warn('No se encontró #navbar-placeholder. El menú no se cargará.');
     }
 
-    // 4. Cargar Productos Relacionados
+    // 2. CARGA MASIVA DE COMPONENTES
+    // Busca cualquier elemento con data-component y carga su contenido
+    const components = document.querySelectorAll('[data-component]');
+    components.forEach(el => {
+        const path = el.getAttribute('data-component');
+        loadComponent(el, path);
+    });
+
+    // 3. Productos Relacionados
     const relatedPlaceholder = document.getElementById('related-products-placeholder');
     if (relatedPlaceholder) {
         const category = relatedPlaceholder.getAttribute('data-category');
         setTimeout(() => {
-            if (typeof renderRelatedProducts === 'function') renderRelatedProducts(category);
-        }, 100);
+            if (typeof renderRelatedProducts === 'function') {
+                renderRelatedProducts(category);
+            }
+        }, 150);
     }
 });
 
-async function loadComponent(id, path) {
-    const container = document.getElementById(id);
-    if (!container) return;
+async function loadComponent(element, path) {
     try {
         const response = await fetch(path);
-        if (!response.ok) throw new Error(`Fallo al cargar ${path}`);
+        if (!response.ok) throw new Error(`Status ${response.status}`);
         const html = await response.text();
-        container.innerHTML = html;
+        element.innerHTML = html;
     } catch (e) {
-        console.error(`Error loading component ${id}:`, e);
+        console.error(`Error cargando ${path}:`, e);
+        element.innerHTML = `<div class="p-4 text-red-500 text-xs border border-red-200 bg-red-50 rounded">Error: No se pudo cargar ${path}</div>`;
     }
 }
-// ... (Resto de funciones sin cambios)
 
-// --- TUS FUNCIONES EXISTENTES DE NAVEGACIÓN ---
-
+// ... (Resto de funciones de UI se mantienen igual: initializeNavbar, etc.) ...
 function initializeNavbar() {
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     if (mobileMenuButton) {
