@@ -1,10 +1,8 @@
 const relatedProductsData = {
-    // CASO 1: Estoy en la página del 24T (Index)
-    // data-category="cisco-catalyst-9200-24T"
+
     "cisco-catalyst-9200-24T": {
-        title: "También Disponible: Cisco Catalyst 9200 en stock asdasd",
+        title: "También Disponible: Cisco Catalyst 9200 en stock",
         products: [
-            // 1. EL 24P (Alternativa directa PoE)
             {
                 id: "C9200L-24P-4G-E",
                 title: "C9200L-24P-4G-E",
@@ -12,7 +10,6 @@ const relatedProductsData = {
                 img: "https://web.netperu100.com/cisco/catalyst/images/C9200L-24P-4G-E_front.jpg",
                 link: "C9200L-24P-4G-E.html"
             },
-            // 2. EL CABLE (Accesorio útil)
             {
                 id: "6-1427200-4",
                 title: "Cable UTP Cat6 AMP",
@@ -20,7 +17,6 @@ const relatedProductsData = {
                 img: "https://www.ds3comunicaciones.com/AMP/images/Caja.jpg", 
                 link: "6-1427200-4.html"
             },
-            // 3. MODELO 24T con 10G (Upgrade)
             {
                 id: "C9200L-24T-4X-E",
                 title: "C9200L-24T-4X-E",
@@ -28,7 +24,6 @@ const relatedProductsData = {
                 img: "https://web.netperu100.com/cisco/catalyst/images/C9200L-24T-4X-E_front.jpg",
                 link: "#"
             },
-             // 4. MODELO 48T (Mayor densidad)
              {
                 id: "C9200L-48T-4G-E",
                 title: "C9200L-48T-4G-E",
@@ -36,7 +31,6 @@ const relatedProductsData = {
                 img: "https://web.netperu100.com/cisco/catalyst/images/C9200L-48T-4G-E_front.jpg",
                 link: "#"
             },
-            // 5. MODELO 24P con 10G
             {
                 id: "C9200L-24P-4X-E",
                 title: "C9200L-24P-4X-E",
@@ -44,7 +38,6 @@ const relatedProductsData = {
                 img: "https://web.netperu100.com/cisco/catalyst/images/C9200L-24P-4X-E_front.jpg",
                 link: "#"
             },
-            // 6. MODELO 48T con 10G
             {
                 id: "C9200L-48T-4X-E",
                 title: "C9200L-48T-4X-E",
@@ -55,12 +48,10 @@ const relatedProductsData = {
         ]
     },
 
-    // CASO 2: Estoy en la página del 24P
-    // data-category="cisco-catalyst-9200-24P"
+
     "cisco-catalyst-9200-24P": {
-        title: "También Disponible: Cisco Catalyst 9200 en stock asdasd",
+        title: "También Disponible: Cisco Catalyst 9200 en stock",
         products: [
-            // 1. EL 24T (Alternativa más económica / solo datos)
             {
                 id: "C9200L-24T-4G-E",
                 title: "C9200L-24T-4G-E",
@@ -68,7 +59,6 @@ const relatedProductsData = {
                 img: "https://web.netperu100.com/cisco/catalyst/images/C9200L-48T-4G-E_front.jpg", 
                 link: "index.html"
             },
-            // 2. EL CABLE (Accesorio útil)
             {
                 id: "6-1427200-4",
                 title: "Cable UTP Cat6 AMP",
@@ -76,7 +66,6 @@ const relatedProductsData = {
                 img: "https://www.ds3comunicaciones.com/AMP/images/Caja.jpg", 
                 link: "6-1427200-4.html"
             },
-            // 3. MODELO 24P con 10G (Upgrade directo)
             {
                 id: "C9200L-24P-4X-E",
                 title: "C9200L-24P-4X-E",
@@ -84,7 +73,6 @@ const relatedProductsData = {
                 img: "https://web.netperu100.com/cisco/catalyst/images/C9200L-24P-4X-E_front.jpg",
                 link: "#"
             },
-            // 4. MODELO 48P (Mayor densidad PoE)
             {
                 id: "C9200L-48P-4G-E",
                 title: "C9200L-48P-4G-E",
@@ -92,7 +80,6 @@ const relatedProductsData = {
                 img: "https://web.netperu100.com/cisco/catalyst/images/C9200L-48P-4G-E_front.jpg",
                 link: "#"
             },
-             // 5. MODELO 24T con 10G
              {
                 id: "C9200L-24T-4X-E",
                 title: "C9200L-24T-4X-E",
@@ -100,7 +87,6 @@ const relatedProductsData = {
                 img: "https://web.netperu100.com/cisco/catalyst/images/C9200L-24T-4X-E_front.jpg",
                 link: "#"
             },
-             // 6. MODELO 48T con 10G
              {
                 id: "C9200L-48T-4X-E",
                 title: "C9200L-48T-4X-E",
@@ -111,8 +97,7 @@ const relatedProductsData = {
         ]
     },
 
-    // CASO 3: Estoy en la página del Cable AMP
-    // data-category="amp-6-1427200-4"
+
     "amp-6-1427200-4": {
         title: "Productos Relacionados: Switches Compatibles",
         products: [
@@ -135,70 +120,86 @@ const relatedProductsData = {
 };
 
 /**
- * Renderiza el bloque de productos similares basado en una llave de categoría.
- * @param {string} categoryKey - El nombre de la categoría en relatedProductsData.
+ * Renderiza el bloque de productos similares.
+ * En MÓVIL: Carrusel horizontal (snap-x).
+ * En ESCRITORIO: Grid convencional.
  */
 function renderRelatedProducts(categoryKey) {
     const container = document.getElementById('related-products-placeholder');
     
-    if (!container) {
-        console.warn('RenderRelated: No se encontró el contenedor placeholder.');
-        return;
-    }
-
-    if (!relatedProductsData[categoryKey]) {
-        console.warn('RenderRelated: No existen datos para la categoría:', categoryKey);
-        return;
-    }
+    if (!container) return;
+    if (!relatedProductsData[categoryKey]) return;
 
     const data = relatedProductsData[categoryKey];
     
     const html = `
-    <section class="py-12 bg-gray-50">
-      <div class="container mx-auto px-4 max-w-6xl">
+    <section class="py-12 bg-gray-50 border-t border-gray-200">
+      <div class="container mx-auto px-4 max-w-7xl">
+        
         <div class="text-center mb-10">
-          <h2 class="text-2xl md:text-3xl font-bold text-white bg-[#049FD9] py-4 px-8 rounded-lg shadow-lg inline-block">
+          <h2 class="text-xl md:text-3xl font-bold text-gray-800 relative inline-block">
             ${data.title}
+            <span class="block h-1 w-1/2 bg-blue-500 mx-auto mt-2 rounded-full"></span>
           </h2>
+          
+          <p class="md:hidden text-xs text-gray-400 mt-2 flex items-center justify-center gap-1 animate-pulse">
+            <i class="fas fa-arrow-left"></i> Desliza para ver más <i class="fas fa-arrow-right"></i>
+          </p>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        
+        <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 md:overflow-visible md:pb-0 scrollbar-hide">
+          
           ${data.products.map(prod => `
-            <a href="${prod.link}" class="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-blue-400 overflow-hidden flex flex-col">
+            
+            
+            <a href="${prod.link}" class="
+                snap-center flex-shrink-0 w-[85vw] md:w-auto md:flex-shrink-1 
+                group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-blue-400 overflow-hidden flex flex-col h-full
+            ">
               <div class="p-6 flex-grow flex flex-col">
-                <div class="flex items-center justify-center mb-6 h-48 bg-white">
-                  <img src="${prod.img}" alt="${prod.title}" onerror="this.src='https://via.placeholder.com/300x200?text=Cisco+Product'" class="max-h-full max-w-full object-contain transform group-hover:scale-110 transition-transform duration-500" />
+                <div class="flex items-center justify-center mb-6 h-40 md:h-48 bg-white rounded-lg p-2">
+                  <img src="${prod.img}" alt="${prod.title}" onerror="this.src='https://via.placeholder.com/300x200?text=Cisco+Product'" class="max-h-full max-w-full object-contain transform group-hover:scale-105 transition-transform duration-500" />
                 </div>
-                <div class="border-t border-gray-50 pt-6">
-                  <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">${prod.title}</h3>
-                  <p class="text-sm text-gray-500 line-clamp-3 leading-relaxed">
+                <div class="border-t border-gray-50 pt-4 mt-auto">
+                  <h3 class="text-base md:text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors line-clamp-1">${prod.title}</h3>
+                  <p class="text-xs md:text-sm text-gray-500 line-clamp-3 leading-relaxed">
                     ${prod.desc}
                   </p>
                 </div>
               </div>
-              <div class="bg-gray-50 py-3 text-center text-blue-600 font-bold text-sm group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+              <div class="bg-gray-50 py-3 text-center text-blue-600 font-bold text-xs md:text-sm group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
                 Ver Detalles <i class="fas fa-arrow-right ml-2 opacity-0 group-hover:opacity-100 transition-all"></i>
               </div>
             </a>
           `).join('')}
+
         </div>
       </div>
-    </section>`;
+    </section>
+    
+    
+    <style>
+      .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+      }
+      .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+      }
+    </style>
+    `;
 
     container.innerHTML = html;
 }
 
-// === EJECUCIÓN INMEDIATA ===
-// No usamos DOMContentLoaded porque al estar el script al final del body, el DOM ya existe.
+
 (function initRelatedProducts() {
     const placeholder = document.getElementById('related-products-placeholder');
     if (placeholder) {
         const category = placeholder.getAttribute('data-category');
-        console.log("Inicializando Productos Relacionados para:", category);
-        
         if (category) {
             renderRelatedProducts(category);
         }
-    } else {
-        console.log("No se encontró el placeholder 'related-products-placeholder'.");
     }
 })();
