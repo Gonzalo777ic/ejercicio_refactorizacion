@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Cargar el navbar
+    // 1. Cargar Navbar
     fetch('./components/navbar.html')
         .then(response => response.text())
         .then(data => {
@@ -10,10 +10,49 @@ document.addEventListener('DOMContentLoaded', function() {
             addDynamicStyles();
         })
         .catch(error => console.error('Error loading navbar:', error));
+
+    // 2. Cargar Componentes Estructurales
+    loadComponent('submenu-placeholder', './components/submenu.html');
+    loadComponent('sidebar-brands-placeholder', './components/sidebar-brands.html');
+    loadComponent('sidebar-prices-placeholder', './components/sidebar-prices.html');
+    loadComponent('footer-placeholder', './components/footer.html');
+
+    // 3. Cargar Detalle del Producto (Dinámico)
+    const productDetail = document.getElementById('product-detail-placeholder');
+    if (productDetail) {
+        const componentPath = productDetail.getAttribute('data-component');
+        if (componentPath) {
+            loadComponent('product-detail-placeholder', componentPath);
+        }
+    }
+
+    // 4. Cargar Productos Relacionados
+    const relatedPlaceholder = document.getElementById('related-products-placeholder');
+    if (relatedPlaceholder) {
+        const category = relatedPlaceholder.getAttribute('data-category');
+        setTimeout(() => {
+            if (typeof renderRelatedProducts === 'function') renderRelatedProducts(category);
+        }, 100);
+    }
 });
 
+async function loadComponent(id, path) {
+    const container = document.getElementById(id);
+    if (!container) return;
+    try {
+        const response = await fetch(path);
+        if (!response.ok) throw new Error(`Fallo al cargar ${path}`);
+        const html = await response.text();
+        container.innerHTML = html;
+    } catch (e) {
+        console.error(`Error loading component ${id}:`, e);
+    }
+}
+// ... (Resto de funciones sin cambios)
+
+// --- TUS FUNCIONES EXISTENTES DE NAVEGACIÓN ---
+
 function initializeNavbar() {
-    // Menú hamburguesa (versión simplificada que será reemplazada por initializeMobileMenu)
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     if (mobileMenuButton) {
         const icon = mobileMenuButton.querySelector('i');
@@ -40,7 +79,6 @@ function initializeMobileMenu() {
         if (menuOverlay) menuOverlay.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
         
-        // Cambiar ícono
         const icon = mobileMenuButton.querySelector('i');
         if (icon) {
             icon.classList.remove('fa-bars');
@@ -48,20 +86,13 @@ function initializeMobileMenu() {
         }
     });
 
-    if (closeMenuButton) {
-        closeMenuButton.addEventListener('click', closeMobileMenu);
-    }
-
-    if (menuOverlay) {
-        menuOverlay.addEventListener('click', closeMobileMenu);
-    }
+    if (closeMenuButton) closeMenuButton.addEventListener('click', closeMobileMenu);
+    if (menuOverlay) menuOverlay.addEventListener('click', closeMobileMenu);
 
     function closeMobileMenu() {
         mobileMenu.classList.add('-translate-x-full');
         if (menuOverlay) menuOverlay.classList.add('hidden');
         document.body.style.overflow = '';
-        
-        // Cambiar ícono
         const icon = mobileMenuButton.querySelector('i');
         if (icon) {
             icon.classList.remove('fa-times');
@@ -96,50 +127,22 @@ function initializeSearchModal() {
     if (closeSearch) closeSearch.addEventListener('click', closeSearchModal);
 
     if (searchModal) {
-        searchModal.addEventListener('click', function(e) {
-            if (e.target === searchModal) {
-                closeSearchModal();
-            }
+        searchModal.addEventListener('click', (e) => {
+            if (e.target === searchModal) closeSearchModal();
         });
     }
-
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && searchModal && !searchModal.classList.contains('none')) {
-            closeSearchModal();
-        }
-    });
 }
 
 function addDynamicStyles() {
     const style = document.createElement('style');
     style.textContent = `
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
-        
-        .anim {
-            animation: fadeIn 0.3s ease-in-out;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .none {
-            display: none;
-        }
-        
-        /* Estilos para el menú móvil */
-        .-translate-x-full {
-            transform: translateX(-100%);
-        }
-        
-        #mobile-menu {
-            transition: transform 0.3s ease-in-out;
-        }
-        
-        #menu-overlay {
-            background-color: rgba(0, 0, 0, 0.5);
-        }
+        .anim { animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .none { display: none; }
+        .-translate-x-full { transform: translateX(-100%); }
+        #mobile-menu { transition: transform 0.3s ease-in-out; }
+        #menu-overlay { background-color: rgba(0, 0, 0, 0.5); }
     `;
     document.head.appendChild(style);
 }
