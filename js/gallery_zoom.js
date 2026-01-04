@@ -1,15 +1,7 @@
-/**
- * Lógica para la galería de imágenes, zoom y carrusel modal.
- */
-
-
 let currentImageIndex = 0;
 
 let productImages = [];
 
-/**
- * Inicializa la lista de imágenes buscando en el DOM
- */
 function initGalleryData() {
 
 
@@ -23,9 +15,7 @@ function initGalleryData() {
     }
 }
 
-/**
- * Cambia la imagen principal en la vista de producto (sin abrir modal)
- */
+
 function toExchangeImage(element) {
     const mainImage = document.getElementById('img_main');
     if (mainImage && element) {
@@ -45,9 +35,6 @@ function toExchangeImage(element) {
     }
 }
 
-/**
- * Abre el modal Lightbox con la imagen actual
- */
 function viewImage(src) {
 
     initGalleryData();
@@ -67,9 +54,7 @@ function viewImage(src) {
     }
 }
 
-/**
- * Actualiza la imagen mostrada en el modal según el índice actual
- */
+
 function updateModalImage() {
     const modalImg = document.getElementById('modal-image');
     const counter = document.getElementById('image-counter');
@@ -88,9 +73,7 @@ function updateModalImage() {
     }
 }
 
-/**
- * Navegación: Imagen Anterior
- */
+
 function prevImage() {
     if (productImages.length <= 1) return;
     currentImageIndex--;
@@ -100,9 +83,7 @@ function prevImage() {
     updateModalImage();
 }
 
-/**
- * Navegación: Imagen Siguiente
- */
+
 function nextImage() {
     if (productImages.length <= 1) return;
     currentImageIndex++;
