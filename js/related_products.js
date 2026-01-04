@@ -132,6 +132,10 @@ function renderRelatedProducts(categoryKey) {
 
     const data = relatedProductsData[categoryKey];
     
+
+
+
+
     const html = `
     <section class="py-12 bg-gray-50 border-t border-gray-200">
       <div class="container mx-auto px-4 max-w-7xl">
@@ -141,25 +145,29 @@ function renderRelatedProducts(categoryKey) {
             ${data.title}
             <span class="block h-1 w-1/2 bg-blue-500 mx-auto mt-2 rounded-full"></span>
           </h2>
-          
+          <!-- Indicador visual de scroll para móvil -->
           <p class="md:hidden text-xs text-gray-400 mt-2 flex items-center justify-center gap-1 animate-pulse">
             <i class="fas fa-arrow-left"></i> Desliza para ver más <i class="fas fa-arrow-right"></i>
           </p>
         </div>
 
-        
+        <!-- CONTENEDOR HÍBRIDO: Flex (Carrusel) en Móvil / Grid en Escritorio -->
         <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 md:overflow-visible md:pb-0 scrollbar-hide">
           
           ${data.products.map(prod => `
-            
-            
+            <!-- TARJETA DE PRODUCTO -->
             <a href="${prod.link}" class="
                 snap-center flex-shrink-0 w-[85vw] md:w-auto md:flex-shrink-1 
                 group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-blue-400 overflow-hidden flex flex-col h-full
             ">
               <div class="p-6 flex-grow flex flex-col">
                 <div class="flex items-center justify-center mb-6 h-40 md:h-48 bg-white rounded-lg p-2">
-                  <img src="${prod.img}" alt="${prod.title}" onerror="this.src='https://via.placeholder.com/300x200?text=Cisco+Product'" class="max-h-full max-w-full object-contain transform group-hover:scale-105 transition-transform duration-500" />
+                  <img 
+                    src="${prod.img}" 
+                    alt="${prod.title}" 
+                    onerror="this.onerror=null; this.src='https://placehold.co/300x200?text=Imagen+No+Disponible'" 
+                    class="max-h-full max-w-full object-contain transform group-hover:scale-105 transition-transform duration-500" 
+                  />
                 </div>
                 <div class="border-t border-gray-50 pt-4 mt-auto">
                   <h3 class="text-base md:text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors line-clamp-1">${prod.title}</h3>
@@ -177,7 +185,6 @@ function renderRelatedProducts(categoryKey) {
         </div>
       </div>
     </section>
-    
     
     <style>
       .scrollbar-hide::-webkit-scrollbar {
