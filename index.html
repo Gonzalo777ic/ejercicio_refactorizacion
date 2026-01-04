@@ -11,15 +11,12 @@
 
   <body class="bg-gray-50">
     
-    <!-- MARCADOR DEL NAVBAR -->
-    <div id="navbar-placeholder"></div>
+        <div id="navbar-placeholder"></div>
 
-    <!-- SUBMENÚ -->
-    <div data-component="./components/submenu.html"></div>
+        <div data-component="./components/submenu.html"></div>
 
     <main>
-      <!-- Breadcrumbs -->
-      <div class="bg-white border-b px-4 py-3 text-xs md:text-sm text-slate-600 flex items-center gap-2 overflow-x-auto whitespace-nowrap shadow-sm mb-6">
+            <div class="bg-white border-b px-4 py-3 text-xs md:text-sm text-slate-600 flex items-center gap-2 overflow-x-auto whitespace-nowrap shadow-sm mb-6">
         <a href="index.html" class="hover:text-blue-600"><i class="fa-solid fa-house"></i></a>
         <span class="text-gray-300">/</span> <a href="#" class="hover:underline">Cisco</a>
         <span class="text-gray-300">/</span> <a href="#" class="hover:underline">Switch Catalyst</a>
@@ -29,89 +26,66 @@
       <div class="mx-auto max-w-[1400px] px-2 md:px-4">
         <div class="flex flex-col md:flex-row gap-6 justify-center items-start">
           
-          <!-- SIDEBAR IZQUIERDO -->
-          <div data-component="./components/sidebar-brands.html" class="hidden lg:block lg:w-60 flex-shrink-0 sticky top-4"></div>
+                    <div data-component="./components/sidebar-brands.html" class="hidden lg:block lg:w-60 flex-shrink-0 sticky top-4"></div>
 
-          <!-- CONTENIDO CENTRAL -->
-          <div class="w-full lg:w-3/5 xl:w-2/3 flex flex-col gap-6">
+                    <div class="w-full lg:w-3/5 xl:w-2/3 flex flex-col gap-6">
             
-            <!-- PARTE 1 & 2: Imágenes y Resumen -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                <!-- Imágenes -->
-                <div class="lg:col-span-5" data-component="./components/c9200-images.html">
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                                <div class="lg:col-span-5" data-component="./components/c9200-images.html">
                     <div class="h-64 bg-white rounded animate-pulse"></div>
                 </div>
                 
-                <!-- Resumen -->
-                <div class="lg:col-span-7" data-component="./components/c9200-summary.html">
+                                <div class="lg:col-span-7" data-component="./components/c9200-summary.html">
                     <div class="h-64 bg-white rounded animate-pulse"></div>
                 </div>
             </div>
 
-            <!-- PARTE 3: Detalles Técnicos -->
-            <div data-component="./components/c9200-details.html">
+                        <div data-component="./components/c9200-details.html">
                 <div class="h-32 bg-white rounded animate-pulse"></div>
             </div>
 
           </div>
 
-          <!-- SIDEBAR DERECHO -->
-          <div data-component="./components/sidebar-prices.html" class="hidden lg:block lg:w-64 flex-shrink-0 sticky top-4"></div>
+                    <div data-component="./components/sidebar-prices.html" class="hidden lg:block lg:w-64 flex-shrink-0 sticky top-4"></div>
         </div>
       </div>
 
-      <!-- Productos Relacionados -->
-      <div id="related-products-placeholder" data-category="cisco-catalyst-9200"></div>
+            <div id="related-products-placeholder" data-category="cisco-catalyst-9200"></div>
     </main>
 
-    <!-- FOOTER -->
-    <div data-component="./components/footer.html"></div>
+        <div data-component="./components/footer.html"></div>
 
-    <!-- Modal Global para Imágenes -->
-    <!-- CAMBIO: bg-opacity-95 a bg-black/80 y añadido backdrop-blur-md -->
-    <!-- Modal Global para Imágenes (Carrusel) -->
-    <div id="image-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 backdrop-blur-md transition-opacity duration-300">
+                <div id="image-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 backdrop-blur-md transition-opacity duration-300">
         
-        <!-- Botón Cerrar (Arriba Derecha) -->
-        <button onclick="closeModal()" class="absolute top-4 right-4 text-white hover:text-gray-300 z-[120] p-2 focus:outline-none">
+                <button onclick="closeModal()" class="absolute top-4 right-4 text-white hover:text-gray-300 z-[120] p-2 focus:outline-none">
             <i class="fas fa-times text-3xl"></i>
         </button>
 
-        <!-- Contenedor Principal del Carrusel -->
-        <!-- Agregamos px-12 md:px-20 para asegurar espacio a los lados para las flechas -->
-        <div class="relative w-full h-full max-w-6xl mx-auto flex items-center justify-center p-4 px-12 md:px-20">
+                        <div class="relative w-full h-full max-w-6xl mx-auto flex items-center justify-center p-4 px-12 md:px-20">
             
-            <!-- Botón Anterior -->
-            <!-- Aumentamos z-index a z-[120] y ajustamos posición -->
-            <button onclick="prevImage()" class="absolute left-2 md:left-4 text-white hover:text-blue-400 z-[120] p-3 rounded-full hover:bg-white/10 transition-colors focus:outline-none" aria-label="Anterior">
+                                    <button onclick="prevImage()" class="absolute left-2 md:left-4 text-white hover:text-blue-400 z-[120] p-3 rounded-full hover:bg-white/10 transition-colors focus:outline-none" aria-label="Anterior">
                 <i class="fas fa-chevron-left text-3xl md:text-4xl drop-shadow-lg"></i>
             </button>
 
-            <!-- Imagen del Modal -->
-            <img 
+                        <img 
                 id="modal-image" 
                 class="max-h-[85vh] max-w-full object-contain rounded-lg shadow-2xl transition-transform duration-300 z-[110]" 
                 src="" 
                 alt="Vista ampliada" 
             />
 
-            <!-- Botón Siguiente -->
-            <!-- Aumentamos z-index a z-[120] y ajustamos posición -->
-            <button onclick="nextImage()" class="absolute right-2 md:right-4 text-white hover:text-blue-400 z-[120] p-3 rounded-full hover:bg-white/10 transition-colors focus:outline-none" aria-label="Siguiente">
+                                    <button onclick="nextImage()" class="absolute right-2 md:right-4 text-white hover:text-blue-400 z-[120] p-3 rounded-full hover:bg-white/10 transition-colors focus:outline-none" aria-label="Siguiente">
                 <i class="fas fa-chevron-right text-3xl md:text-4xl drop-shadow-lg"></i>
             </button>
             
-            <!-- Indicador de página -->
-            <div id="image-counter" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white/90 text-sm bg-black/60 px-4 py-1.5 rounded-full z-[120]">
+                        <div id="image-counter" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white/90 text-sm bg-black/60 px-4 py-1.5 rounded-full z-[120]">
                 1 / 3
             </div>
 
         </div>
     </div>
 
-    <!-- SCRIPTS -->
-    <!-- Agregamos el script de la galería ANTES de nav.js -->
-    <script src="./js/gallery_zoom.js"></script>
+            <script src="./js/gallery_zoom.js"></script>
     <script src="./js/related_products.js"></script>
     <script src="./js/nav.js"></script>
     <script src="./js/change_tabs.js"></script>

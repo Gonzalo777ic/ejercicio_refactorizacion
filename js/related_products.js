@@ -1,15 +1,33 @@
-
 const relatedProductsData = {
     "cisco-catalyst-9200": {
         title: "También Disponible: Cisco Catalyst 9200 en stock",
         products: [
+
+            {
+                id: "C9200L-24T-4G-E",
+                title: "C9200L-24T-4G-E",
+                desc: "Switch Cisco Catalyst 9200L Essentials C9200L-24T, capa L3 con 24 puertos Gigabit, 04 puertos para fibra SFP. (Modelo Base)",
+                img: "https://web.netperu100.com/cisco/catalyst/images/C9200L-48T-4G-E_front.jpg", 
+                link: "index.html"
+            },
+
             {
                 id: "C9200L-24P-4G-E",
                 title: "C9200L-24P-4G-E",
-                desc: "Switch Cisco Catalyst 9200L Essentials C9200L-24P, capa L3 con 24 puertos PoE+ (370W) Gigabit, 04 puertos para fibra SFP, Stacking hasta 08 equipos.",
+                desc: "Switch Cisco Catalyst 9200L Essentials C9200L-24P, capa L3 con 24 puertos PoE+ (370W) Gigabit, 04 puertos para fibra SFP.",
                 img: "https://web.netperu100.com/cisco/catalyst/images/C9200L-24P-4G-E_front.jpg",
-                link: "./C9200L-24P-4G-E.html"
+                link: "C9200L-24P-4G-E.html"
             },
+
+
+            {
+                id: "6-1427200-4",
+                title: "Cable UTP Cat6 AMP",
+                desc: "Cable Ethernet UTP Categoría 6 CommScope (AMP) 6-1427200-4, bobina de 305m, color azul. Para cableado estructurado.",
+                img: "https://www.ds3comunicaciones.com/AMP/images/Caja.jpg", 
+                link: "6-1427200-4.html"
+            },
+
             {
                 id: "C9200L-24T-4X-E",
                 title: "C9200L-24T-4X-E",
@@ -30,34 +48,27 @@ const relatedProductsData = {
                 desc: "Switch Cisco Catalyst 9200L Essentials C9200L-48T, capa L3 con 48 puertos Gigabit, 04 puertos para fibra SFP.",
                 img: "https://web.netperu100.com/cisco/catalyst/images/C9200L-48T-4G-E_front.jpg",
                 link: "#"
-            },
-            {
-                id: "C9200L-48P-4G-E",
-                title: "C9200L-48P-4G-E",
-                desc: "Switch Cisco Catalyst 9200L Essentials C9200L-48P, capa L3 con 48 puertos PoE+ (740W) Gigabit, 04 puertos para fibra SFP.",
-                img: "https://web.netperu100.com/cisco/catalyst/images/C9200L-48P-4G-E_front.jpg",
-                link: "#"
-            },
-            {
-                id: "C9200L-48T-4X-E",
-                title: "C9200L-48T-4X-E",
-                desc: "Switch Cisco Catalyst 9200L Essentials C9200L-48T, capa L3 con 48 puertos Gigabit, 04 puertos 10G para fibra SFP+.",
-                img: "https://web.netperu100.com/cisco/catalyst/images/C9200L-48T-4X-E_front.jpg",
-                link: "#"
             }
         ]
     },
 
     "amp-6-1427200-4": {
-        title: "Productos Relacionados: Conectividad AMP",
+        title: "Productos Relacionados: Switches Compatibles",
         products: [
 
             {
-                id: "ejemplo-amp",
-                title: "Producto AMP Relacionado",
-                desc: "Descripción del producto extraído...",
-                img: "URL_DE_IMAGEN",
-                link: "#"
+                id: "C9200L-24T-4G-E",
+                title: "Switch C9200L-24T",
+                desc: "Switch Cisco Catalyst 9200L 24 Puertos Datos. Ideal para conectar con este cableado.",
+                img: "https://web.netperu100.com/cisco/catalyst/images/C9200L-48T-4G-E_front.jpg",
+                link: "index.html"
+            },
+            {
+                id: "C9200L-24P-4G-E",
+                title: "Switch C9200L-24P PoE",
+                desc: "Switch Cisco Catalyst 9200L 24 Puertos PoE. Soporta teléfonos y cámaras.",
+                img: "https://web.netperu100.com/cisco/catalyst/images/C9200L-24P-4G-E_front.jpg",
+                link: "C9200L-24P-4G-E.html"
             }
         ]
     }
@@ -86,7 +97,7 @@ function renderRelatedProducts(categoryKey) {
             <a href="${prod.link}" class="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-blue-400 overflow-hidden flex flex-col">
               <div class="p-6 flex-grow flex flex-col">
                 <div class="flex items-center justify-center mb-6 h-48 bg-white">
-                  <img src="${prod.img}" alt="${prod.title}" class="max-h-full max-w-full object-contain transform group-hover:scale-110 transition-transform duration-500" />
+                  <img src="${prod.img}" alt="${prod.title}" onerror="this.src='https://via.placeholder.com/300x200?text=Cisco+Product'" class="max-h-full max-w-full object-contain transform group-hover:scale-110 transition-transform duration-500" />
                 </div>
                 <div class="border-t border-gray-50 pt-6">
                   <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">${prod.title}</h3>

@@ -1,9 +1,7 @@
 <nav class="bg-white w-full shadow-md border relative z-50">
   <div class="container mx-auto px-4">
-    <!-- Desktop Navbar -->
-    <div class="hidden lg:flex justify-between items-center py-4">
-      <!-- Logo -->
-      <div class="flex items-center flex-shrink-0">
+        <div class="hidden lg:flex justify-between items-center py-4">
+            <div class="flex items-center flex-shrink-0">
         <a href="index.html">
           <img
             src="https://www.ds3comunicaciones.com/mikrotik/images/Logo1.jpg"
@@ -13,8 +11,7 @@
         </a>
       </div>
 
-      <!-- Info de contacto (Desktop) -->
-      <div class="flex space-x-8 text-black">
+            <div class="flex space-x-8 text-black">
         <div class="flex items-center group">
           <i class="fas fa-phone-alt mr-2 text-black group-hover:text-blue-600 transition-colors"></i>
           <div>
@@ -50,8 +47,7 @@
         </div>
       </div>
 
-      <!-- Botón de búsqueda -->
-      <div class="flex items-center">
+            <div class="flex items-center">
         <button
           id="search-button"
           class="p-2.5 rounded-full bg-gray-100 hover:bg-blue-600 hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -62,12 +58,10 @@
       </div>
     </div>
 
-    <!-- Mobile Navbar Header -->
-    <div class="lg:hidden flex flex-col gap-2 py-3">
+        <div class="lg:hidden flex flex-col gap-2 py-3">
       <div class="flex justify-between items-center">
         <div class="flex items-center gap-3">
-          <!-- Boton hamburguesa -->
-          <button
+                    <button
             id="mobile-menu-button"
             class="p-2 rounded-md hover:bg-gray-100 text-gray-700 transition-colors focus:outline-none"
             aria-label="Menú"
@@ -75,8 +69,7 @@
             <i class="fas fa-bars text-xl"></i>
           </button>
 
-          <!-- Logo Mobile -->
-          <a href="index.html" class="flex items-center gap-2">
+                    <a href="index.html" class="flex items-center gap-2">
             <img
               src="https://www.ds3comunicaciones.com/mikrotik/images/Logo1.jpg"
               alt="NetPeru Logo"
@@ -90,8 +83,7 @@
           </a>
         </div>
 
-        <!-- Boton buscar mobile -->
-        <button
+                <button
           id="mobile-search-button"
           class="p-2 rounded-md bg-gray-100 text-gray-600 hover:bg-blue-600 hover:text-white transition-colors border border-transparent"
           aria-label="Buscar"
@@ -100,8 +92,7 @@
         </button>
       </div>
 
-      <!-- Contacto inferior mobile -->
-      <div class="border-t pt-2 mt-1 flex justify-between items-center text-xs text-gray-600 overflow-x-auto whitespace-nowrap">
+            <div class="border-t pt-2 mt-1 flex justify-between items-center text-xs text-gray-600 overflow-x-auto whitespace-nowrap">
         <div class="flex items-center gap-3">
           <span class="flex items-center"><i class="fas fa-phone-alt mr-1"></i> 996533223</span>
           <span class="flex items-center"><i class="fas fa-envelope mr-1"></i> netperu100@hotmail.com</span>
@@ -110,15 +101,12 @@
     </div>
   </div>
 
-  <!-- Menú móvil desplegable (Slide-over) -->
-  <!-- CORRECCIÓN: style="visibility: hidden;" para evitar FOUC (parpadeo) -->
-  <div
+      <div
     id="mobile-menu"
     class="fixed top-0 left-0 h-full w-72 sm:w-80 bg-white shadow-2xl z-[60] transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col"
     style="visibility: hidden;"
   >
-    <!-- Cabecera del menú -->
-    <div class="flex justify-between items-center p-4 border-b bg-gray-50">
+        <div class="flex justify-between items-center p-4 border-b bg-gray-50">
       <a href="index.html" class="block">
         <img src="https://www.ds3comunicaciones.com/mikrotik/images/Logo1.jpg" alt="NetPeru" class="h-10 object-contain">
       </a>
@@ -127,10 +115,8 @@
       </button>
     </div>
 
-    <!-- Contenido del menú con scroll -->
-    <div class="flex-1 overflow-y-auto px-4 py-4 custom-scrollbar">
-      <!-- Enlaces Rápidos Cisco -->
-      <div class="mb-6">
+        <div class="flex-1 overflow-y-auto px-4 py-4 custom-scrollbar">
+            <div class="mb-6">
         <h4 class="font-bold text-gray-400 text-xs uppercase mb-3 tracking-wider">Accesos Cisco</h4>
         <div class="flex flex-col space-y-1">
           <a href="http://ds3comunicaciones.com/cisco/precios_cisco_b.html" class="flex items-center py-2 px-2 rounded hover:bg-blue-50 text-gray-700 hover:text-blue-600 transition-colors text-sm"><i class="fas fa-angle-right w-4 text-gray-400 mr-2"></i> Lista Completa</a>
@@ -147,8 +133,7 @@
 
       <hr class="border-gray-100 my-4">
 
-      <!-- LISTAS DE PRECIOS COMPLETA (Desplegable) -->
-      <details class="group mb-2">
+            <details class="group mb-2">
         <summary class="flex justify-between items-center cursor-pointer list-none py-3 px-2 font-bold text-gray-800 hover:bg-gray-50 rounded-lg transition-colors">
           <span class="flex items-center"><i class="fas fa-file-invoice-dollar w-6 text-center text-gray-400 mr-2"></i> Todas las Listas de Precios</span>
           <i class="fas fa-chevron-down text-gray-400 text-sm group-open:rotate-180 transition-transform duration-300"></i>
@@ -174,8 +159,7 @@
         </div>
       </details>
 
-      <!-- MARCAS COMPLETA (Desplegable) -->
-      <details class="group mb-4">
+            <details class="group mb-4">
         <summary class="flex justify-between items-center cursor-pointer list-none py-3 px-2 font-bold text-gray-800 hover:bg-gray-50 rounded-lg transition-colors">
           <span class="flex items-center"><i class="fas fa-tags w-6 text-center text-gray-400 mr-2"></i> Nuestras Marcas</span>
           <i class="fas fa-chevron-down text-gray-400 text-sm group-open:rotate-180 transition-transform duration-300"></i>
@@ -217,7 +201,6 @@
   <div id="menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-[55] hidden backdrop-blur-sm transition-opacity duration-300"></div>
 </nav>
 
-<!-- Modal de Búsqueda -->
 <section
   id="search-modal"
   class="fixed inset-0 z-[70] hidden flex-col items-center justify-start pt-4 sm:pt-20 px-4"
