@@ -158,7 +158,7 @@ function initializeMobileMenu() {
 }
 
 
-function initializeNavbar() { /* ... */ }
+function initializeNavbar() {  }
 
 function initializeSearchModal() {
     const searchModal = document.getElementById('search-modal');

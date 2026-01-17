@@ -99,24 +99,270 @@ const relatedProductsData = {
 
 
     "amp-6-1427200-4": {
-        title: "Productos Relacionados: Switches Compatibles",
+        title: "Otras Variedades de Cables AMP Disponibles",
         products: [
             {
-                id: "C9200L-24T-4G-E",
-                title: "Switch C9200L-24T",
-                desc: "Switch Cisco Catalyst 9200L 24 Puertos Datos. Ideal para conectar con este cableado.",
-                img: "https://web.netperu100.com/cisco/catalyst/images/C9200L-48T-4G-E_front.jpg",
-                link: "index.html"
+                id: "1859381-2",
+                title: "Cable Cat 6A LSZH",
+                desc: "Alta velocidad (10Gbps). Libre de halógenos (IEC-60332-3).",
+                img: "https://www.kroton.com.pe/wp-content/uploads/2016/12/1859345-2.jpg",
+                link: "1859381-2.html"
             },
             {
-                id: "C9200L-24P-4G-E",
-                title: "Switch C9200L-24P PoE",
-                desc: "Switch Cisco Catalyst 9200L 24 Puertos PoE. Soporta teléfonos y cámaras.",
-                img: "https://web.netperu100.com/cisco/catalyst/images/C9200L-24P-4G-E_front.jpg",
-                link: "C9200L-24P-4G-E.html"
+                id: "1859218-2",
+                title: "Cat 6A Apantallado",
+                desc: "Blindado (F/UTP) para protección contra ruido e interferencias.",
+                img: "https://www.ds3comunicaciones.com/AMP/images/1859218-2.jpg",
+                link: "1859218-2.html"
+            },
+            {
+                id: "1859345-2",
+                title: "Cable Cat 6 LSZH",
+                desc: "Mayor seguridad contra incendios que la versión estándar.",
+                img: "https://www.ds3comunicaciones.com/AMP/images/1859218-2.jpg",
+                link: "1859345-2.html"
+            },
+            {
+                id: "1427254-4",
+                title: "Cable Cat 6 CM",
+                desc: "Versión económica (PVC) para uso general.",
+                img: "https://www.ds3comunicaciones.com/AMP/images/1427254-4-1.jpg",
+                link: "1427254-4.html"
+            },
+            {
+                id: "219585-2",
+                title: "Cat 6 LSZH Blanco",
+                desc: "Color blanco. Libre de halógenos. 23 AWG.",
+                img: "https://www.ds3comunicaciones.com/AMP/images/219585-2_front.jpg",
+                link: "219585-2.html"
             }
         ]
-    }
+    },
+    "amp-1859381-2": {
+        title: "Otras Variedades de Cables AMP Disponibles",
+        products: [
+            {
+                id: "6-1427200-4",
+                title: "Cable Cat 6 CMR (Azul)",
+                desc: "Estándar corporativo. 23 AWG, 100% Cobre. Ideal para datos.",
+                img: "https://www.ds3comunicaciones.com/AMP/images/6-1427200-4-1.jpg",
+                link: "6-1427200-4.html"
+            },
+            {
+                id: "1859218-2",
+                title: "Cat 6A Apantallado",
+                desc: "Blindado (F/UTP) para protección contra ruido e interferencias.",
+                img: "https://www.ds3comunicaciones.com/AMP/images/1859218-2.jpg",
+                link: "1859218-2.html"
+            },
+            {
+                id: "1859345-2",
+                title: "Cable Cat 6 LSZH",
+                desc: "Mayor seguridad contra incendios que la versión estándar.",
+                img: "https://www.ds3comunicaciones.com/AMP/images/1859218-2.jpg",
+                link: "1859345-2.html"
+            },
+            {
+                id: "1427254-4",
+                title: "Cable Cat 6 CM",
+                desc: "Versión económica (PVC) para uso general.",
+                img: "https://www.ds3comunicaciones.com/AMP/images/1427254-4-1.jpg",
+                link: "1427254-4.html"
+            },
+            {
+                id: "219585-2",
+                title: "Cat 6 LSZH Blanco",
+                desc: "Color blanco. Libre de halógenos. 23 AWG.",
+                img: "https://www.ds3comunicaciones.com/AMP/images/219585-2_front.jpg",
+                link: "219585-2.html"
+            }
+        ]
+    },
+
+
+
+
+
+    "amp-1859218-2": {
+        title: "Otras Variedades de Cables AMP Disponibles",
+        products: [
+            {
+                id: "6-1427200-4",
+                title: "Cable Cat 6 CMR (Azul)",
+                desc: "Estándar corporativo. 23 AWG, 100% Cobre. Ideal para datos.",
+                img: "https://www.ds3comunicaciones.com/AMP/images/6-1427200-4-1.jpg",
+                link: "6-1427200-4.html"
+            },
+            {
+                id: "1859381-2",
+                title: "Cable Cat 6A LSZH",
+                desc: "Alta velocidad (10Gbps). Libre de halógenos (IEC-60332-3).",
+                img: "https://www.kroton.com.pe/wp-content/uploads/2016/12/1859345-2.jpg",
+                link: "1859381-2.html"
+            },
+            {
+                id: "1859345-2",
+                title: "Cable Cat 6 LSZH",
+                desc: "Mayor seguridad contra incendios que la versión estándar.",
+                img: "https://www.ds3comunicaciones.com/AMP/images/1859218-2.jpg",
+                link: "1859345-2.html"
+            },
+            {
+                id: "1427254-4",
+                title: "Cable Cat 6 CM",
+                desc: "Versión económica (PVC) para uso general.",
+                img: "https://www.ds3comunicaciones.com/AMP/images/1427254-4-1.jpg",
+                link: "1427254-4.html"
+            },
+            {
+                id: "219585-2",
+                title: "Cat 6 LSZH Blanco",
+                desc: "Color blanco. Libre de halógenos. 23 AWG.",
+                img: "https://www.ds3comunicaciones.com/AMP/images/219585-2_front.jpg",
+                link: "219585-2.html"
+            }
+        ]
+    },
+
+
+
+
+
+    "amp-1859345-2": {
+        title: "Otras Variedades de Cables AMP Disponibles",
+        products: [
+            {
+                id: "6-1427200-4",
+                title: "Cable Cat 6 CMR (Azul)",
+                desc: "Estándar corporativo. 23 AWG, 100% Cobre. Ideal para datos.",
+                img: "https://www.ds3comunicaciones.com/AMP/images/6-1427200-4-1.jpg",
+                link: "6-1427200-4.html"
+            },
+            {
+                id: "1859381-2",
+                title: "Cable Cat 6A LSZH",
+                desc: "Alta velocidad (10Gbps). Libre de halógenos (IEC-60332-3).",
+                img: "https://www.kroton.com.pe/wp-content/uploads/2016/12/1859345-2.jpg",
+                link: "1859381-2.html"
+            },
+            {
+                id: "1859218-2",
+                title: "Cat 6A Apantallado",
+                desc: "Blindado (F/UTP) para protección contra ruido e interferencias.",
+                img: "https://www.ds3comunicaciones.com/AMP/images/1859218-2.jpg",
+                link: "1859218-2.html"
+            },
+            {
+                id: "1427254-4",
+                title: "Cable Cat 6 CM",
+                desc: "Versión económica (PVC) para uso general.",
+                img: "https://www.ds3comunicaciones.com/AMP/images/1427254-4-1.jpg",
+                link: "1427254-4.html"
+            },
+            {
+                id: "219585-2",
+                title: "Cat 6 LSZH Blanco",
+                desc: "Color blanco. Libre de halógenos. 23 AWG.",
+                img: "https://www.ds3comunicaciones.com/AMP/images/219585-2_front.jpg",
+                link: "219585-2.html"
+            }
+        ]
+    },
+
+
+
+
+
+    "amp-1427254-4": {
+        title: "Otras Variedades de Cables AMP Disponibles",
+        products: [
+            {
+                id: "6-1427200-4",
+                title: "Cable Cat 6 CMR (Azul)",
+                desc: "Estándar corporativo. 23 AWG, 100% Cobre. Ideal para datos.",
+                img: "https://www.ds3comunicaciones.com/AMP/images/6-1427200-4-1.jpg",
+                link: "6-1427200-4.html"
+            },
+            {
+                id: "1859381-2",
+                title: "Cable Cat 6A LSZH",
+                desc: "Alta velocidad (10Gbps). Libre de halógenos (IEC-60332-3).",
+                img: "https://www.kroton.com.pe/wp-content/uploads/2016/12/1859345-2.jpg",
+                link: "1859381-2.html"
+            },
+            {
+                id: "1859218-2",
+                title: "Cat 6A Apantallado",
+                desc: "Blindado (F/UTP) para protección contra ruido e interferencias.",
+                img: "https://www.ds3comunicaciones.com/AMP/images/1859218-2.jpg",
+                link: "1859218-2.html"
+            },
+            {
+                id: "1859345-2",
+                title: "Cable Cat 6 LSZH",
+                desc: "Mayor seguridad contra incendios que la versión estándar.",
+                img: "https://www.ds3comunicaciones.com/AMP/images/1859218-2.jpg",
+                link: "1859345-2.html"
+            },
+            {
+                id: "219585-2",
+                title: "Cat 6 LSZH Blanco",
+                desc: "Color blanco. Libre de halógenos. 23 AWG.",
+                img: "https://www.ds3comunicaciones.com/AMP/images/219585-2_front.jpg",
+                link: "219585-2.html"
+            }
+        ]
+    },
+
+
+
+
+
+    "amp-219585-2": {
+        title: "Otras Variedades de Cables AMP Disponibles",
+        products: [
+            {
+                id: "6-1427200-4",
+                title: "Cable Cat 6 CMR (Azul)",
+                desc: "Estándar corporativo. 23 AWG, 100% Cobre. Ideal para datos.",
+                img: "https://www.ds3comunicaciones.com/AMP/images/6-1427200-4-1.jpg",
+                link: "6-1427200-4.html"
+            },
+            {
+                id: "1859381-2",
+                title: "Cable Cat 6A LSZH",
+                desc: "Alta velocidad (10Gbps). Libre de halógenos (IEC-60332-3).",
+                img: "https://www.kroton.com.pe/wp-content/uploads/2016/12/1859345-2.jpg",
+                link: "1859381-2.html"
+            },
+            {
+                id: "1859218-2",
+                title: "Cat 6A Apantallado",
+                desc: "Blindado (F/UTP) para protección contra ruido e interferencias.",
+                img: "https://www.ds3comunicaciones.com/AMP/images/1859218-2.jpg",
+                link: "1859218-2.html"
+            },
+            {
+                id: "1859345-2",
+                title: "Cable Cat 6 LSZH",
+                desc: "Mayor seguridad contra incendios que la versión estándar.",
+                img: "https://www.ds3comunicaciones.com/AMP/images/1859218-2.jpg",
+                link: "1859345-2.html"
+            },
+            {
+                id: "1427254-4",
+                title: "Cable Cat 6 CM",
+                desc: "Versión económica (PVC) para uso general.",
+                img: "https://www.ds3comunicaciones.com/AMP/images/1427254-4-1.jpg",
+                link: "1427254-4.html"
+            }
+        ]
+    },
+
+
+
+
+
 };
 
 /**

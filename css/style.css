@@ -6,10 +6,10 @@ body {
 
 
 .scrollbar-hide {
-    scrollbar-width: none; /* Para Firefox */
-    -ms-overflow-style: none; /* Para IE y Edge */
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
   }
   
 .scrollbar-hide::-webkit-scrollbar {
-    display: none; /* Para Chrome, Safari y Opera */
+    display: none; 
   }
